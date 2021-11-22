@@ -10,48 +10,43 @@ const Player = (mark) => {
     }
 }
 
-const Gameboard = (() => {
-    let board = ['', '', '', '', '', '', '', '', ''];
+const DisplayController = (() => {
     const spaceBtns = document.querySelectorAll('[data-space-btn]');
+    let _board = ['', '', '', '', '', '', '', '', ''];
 
-    // function render() {
-    //     board.forEach((space, index) => {
-    //         spaceBtns[index].innerText = space;
-    //     });
-
-    //     // return board;
-    // }
-
-    function setBoard(index, sign) {
-        if (index > board.length) return;
-
-        board[index] = sign;
+    function render() {
+        spaceBtns.forEach((space, index) => {
+            space.addEventListener('click', (e) => {
+                if (_board[index] === '') {
+                    space.innerText = GameController.playRound(); 
+                    _board[index] = space.innerText;
+                }
+            });
+        });
     }
-
-    function getBoard() {
-        
-    }
-    
-    // spaceBtns.forEach((space, index) => {
-    //     space.addEventListener('click', (e) => {
-    //         console.log(e);
-    //         space.innerText = markBoard(index, player1.getMark());
-    //     });
-    // });
 
     return {
-        setBoard,
+        render,
     }
-})();
-
-const DisplayController = (() => {
-
 })();
 
 const GameController = (() => {
-    const player1 = Player('x');
-    const player2 = Player('o');
-    let round = 1;
+    const _player1 = Player('x');
+    const _player2 = Player('o');
+    let _round = 1;
+
+    function playRound() {
+        for (let i = 0; i <= 8; i++) {
+            var currentPlayer = _round % 2 === 0 ? _player2.getMark() : _player1.getMark();
+            _round++;
+        }
+        
+        return currentPlayer;
+    }
+
+    return {
+        playRound,
+    }
 })();
 
-Gameboard.render();
+DisplayController.render();
