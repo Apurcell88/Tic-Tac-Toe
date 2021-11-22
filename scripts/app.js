@@ -1,4 +1,5 @@
 'use strict'
+let board = ['', '', '', '', '', '', '', '', ''];
 
 const Player = (mark) => {
     this.mark = mark;
@@ -11,15 +12,15 @@ const Player = (mark) => {
 }
 
 const DisplayController = (() => {
-    const spaceBtns = document.querySelectorAll('[data-space-btn]');
-    let _board = ['', '', '', '', '', '', '', '', ''];
+    const _spaceBtns = document.querySelectorAll('[data-space-btn]');
+    let board = ['', '', '', '', '', '', '', '', ''];
 
     function render() {
-        spaceBtns.forEach((space, index) => {
+        _spaceBtns.forEach((space, index) => {
             space.addEventListener('click', (e) => {
-                if (_board[index] === '') {
+                if (board[index] === '') {
                     space.innerText = GameController.playRound(); 
-                    _board[index] = space.innerText;
+                    board[index] = space.innerText;
                 }
             });
         });
@@ -27,6 +28,7 @@ const DisplayController = (() => {
 
     return {
         render,
+        board
     }
 })();
 
@@ -37,15 +39,23 @@ const GameController = (() => {
 
     function playRound() {
         for (let i = 0; i <= 8; i++) {
+            if (DisplayController.board[0] === 'x' && DisplayController.board[1] === 'x' && DisplayController.board[2] === 'x') {
+                break;
+            }
             var currentPlayer = _round % 2 === 0 ? _player2.getMark() : _player1.getMark();
             _round++;
         }
         
         return currentPlayer;
+    };
+
+    function checkWin(board) {
+        
     }
 
     return {
         playRound,
+        checkWin
     }
 })();
 
