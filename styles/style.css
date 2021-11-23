@@ -16,8 +16,11 @@ body {
     flex-direction: column;
 }
 
-#tic-tac-text {
+.text {
     font-size: 4em;
+}
+
+.wavy {
     text-decoration-line: underline;
     text-decoration-style: wavy;
     text-decoration-color: black;
@@ -43,4 +46,4 @@ body {
     height: 101%;
     font-size: 4rem;
     background: white;
-} */
+}
