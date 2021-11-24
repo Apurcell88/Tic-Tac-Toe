@@ -1,14 +1,11 @@
 'use strict'
 const Player = (mark) => {
     this.mark = mark;
-    this.name = name;
 
     const getMark = () => mark;
-    const getName = () => name;
 
     return {
         getMark,
-        getName,
     }
 }
 
