@@ -8,42 +8,102 @@ body {
     padding: 0;
 }
 
-#page-container {
+.page-container {
     width: 100vw;
     height: 100vh;
     display: flex;
     align-items: center;
     flex-direction: column;
+    background: linear-gradient(#0b0c10, #1f2833);
 }
 
 .text {
     font-size: 4em;
+    color: white;
 }
 
 .wavy {
     text-decoration-line: underline;
     text-decoration-style: wavy;
-    text-decoration-color: black;
+    text-decoration-color: white;
+}
+
+.new-game-btn {
+    margin-bottom: 30px;
+    width: 7rem;
+    height: 3.2rem;
+    font-size: 1.2rem;
+    border-radius: 20px;
+    border: none;
+    background: #45a29e;
+    color: white;
 }
 
 #board {
     border: 3px black solid;
-    height: 50%;
-    width: 50%;
+    width: 60%;
+    height: 35%;
     display: flex;
     flex-wrap: wrap;
-    /* justify-content: center; */
-    /* align-items: center; */
 }
 
 .space {
     border: 1px black solid;
     width: 33.33%;
+    height: 33.33%;
 }
 
 .btn-letter {
     width: 100%;
     height: 101%;
     font-size: 4rem;
-    background: white;
+    background: #eee;
+    color: #45a29e;
+}
+
+@media only screen and (min-width: 580px) {
+    #board {
+        height: 45%;
+        width: 65%;
+    }
+}
+
+@media only screen and (min-width: 750px) {
+    #board {
+        height: 50%;
+        width: 50%;
+    }
+}
+
+@media only screen and (min-width: 1120px) {
+    #board {
+        height: 50%;
+        width: 45%;
+    }
+
+    .btn-letter {
+        font-size: 4.3rem;
+    }
+}
+
+@media only screen and (min-width: 1400px) {
+    #board {
+        height: 50%;
+        width: 35%;
+    }
+
+    .btn-letter {
+        font-size: 4.7rem;
+    }
+}
+
+@media only screen and (min-width: 1630px) {
+    #board {
+        height: 45%;
+        width: 30%;
+    }
+
+    .btn-letter {
+        font-size: 4.7rem;
+    }
 }
